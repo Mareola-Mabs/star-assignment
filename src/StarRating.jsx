@@ -1,3 +1,6 @@
+// Import rating function
+import { range } from './util.js'
+
 function StarRating({ rating }) {
   /*
     Here's the markup for a single star:
@@ -13,16 +16,21 @@ function StarRating({ rating }) {
     based on the `rating` prop.
     If the rating is 4, we need 4 copies.
   */
+ const ImageRender = ()=>{
+  return range(rating).map(item =>{
+    return (
+    <img
+      key={crypto.randomUUID()}
+      alt="Rating"
+      className="gold-star"
+      src="/star.svg"
+    />)
+  })
+ }
 
-  return (
-    <div className="star-wrapper">
-      <img
-        key={crypto.randomUUID()}
-        alt=""
-        className="gold-star"
-        src="/star.svg"
-      />
-    </div>
+  return (<div className="star-wrapper">
+    <ImageRender/>
+  </div>
   )
 }
 
